@@ -11,7 +11,8 @@
     "test:e2e:ci": "start-server-and-test preview http://127.0.0.1:4173/ 'cypress run --e2e'",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "prepare": "husky install"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.9",
@@ -37,6 +38,7 @@
     "eslint-plugin-vue": "^9.0.0",
     "husky": "^8.0.1",
     "jsdom": "^20.0.0",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "start-server-and-test": "^1.14.0",
@@ -45,5 +47,14 @@
     "vite": "^2.9.12",
     "vitest": "^0.15.1",
     "vue-tsc": "^0.38.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "prettier --write",
+      "eslint",
+      "git add ."
+    ],
+    "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

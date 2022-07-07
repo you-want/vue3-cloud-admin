@@ -18,8 +18,10 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        撒打算大
+
+        askdjkls
+
+        <RouterLink to="/about">About</RouterLink>' fdsfsd fsdasssssssdsad '
       </nav>
     </div>
   </header>
