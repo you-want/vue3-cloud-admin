@@ -7,6 +7,7 @@ export {};
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
+    ABackTop: typeof import("ant-design-vue/es")["BackTop"];
     AConfigProvider: typeof import("ant-design-vue/es")["ConfigProvider"];
     ALayout: typeof import("ant-design-vue/es")["Layout"];
     ALayoutContent: typeof import("ant-design-vue/es")["LayoutContent"];

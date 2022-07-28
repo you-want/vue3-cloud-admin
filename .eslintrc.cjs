@@ -15,4 +15,9 @@ module.exports = {
       extends: ["plugin:cypress/recommended"],
     },
   ],
+  rules: {
+    "no-undef": 0,
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": ["off"],
+  },
 };

@@ -1,35 +1,20 @@
+import type { App } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import CloudLayout from "@/layouts/CloudLayout.vue";
+import { basicRoutes, asyncRoutes } from "./routes";
+import { setupRouterGuard } from "./guard";
+// import { setupDynamicRoutes } from './routes/plugins/dynamicRoutes'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      name: "",
-      redirect: "/home",
-      component: CloudLayout,
-      children: [
-        {
-          path: "/home",
-          name: "home",
-          meta: {
-            title: "home",
-          },
-          component: HomeView,
-        },
-        {
-          path: "/about",
-          name: "about",
-          meta: {
-            title: "about",
-          },
-          component: () => import("@/views/AboutView.vue"),
-        },
-      ],
-    },
-  ],
+export const router = createRouter({
+  routes: [...basicRoutes, ...asyncRoutes],
+  history: createWebHistory(),
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
-export default router;
+export function setupRouter(app: App) {
+  app.use(router);
+
+  // Router guard
+  setupRouterGuard(router);
+
+  // setupDynamicRoutes(asyncRoutes)
+}
