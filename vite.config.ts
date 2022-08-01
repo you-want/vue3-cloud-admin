@@ -43,12 +43,16 @@ export default defineConfig(({ mode }) => {
       vue(),
       vueJsx(),
       Components({
+        dirs: [],
+        extensions: ["vue"],
+        include: [/\.vue$/, /\.vue\?vue/],
         resolvers: [AntDesignVueResolver()],
+        dts: "src/types/components.d.ts",
       }),
       AutoImport({
-        imports: ["vue", "vue-router"],
+        imports: ["vue", "vue-router", "@vueuse/core"],
         resolvers: [AntDesignVueResolver()],
-        dts: "src/auto-import.d.ts",
+        dts: "src/types/auto-import.d.ts",
       }),
       // 这里的 'myMicroAppName' 是子应用名，主应用注册时 AppName 需保持一致
       qiankun(name, { useDevMode }),

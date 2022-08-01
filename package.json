@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@vueuse/core": "^9.0.2",
     "ant-design-vue": "^3.2.9",
     "dayjs": "^1.11.4",
+    "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.14",
     "vue": "^3.2.37",
@@ -28,6 +30,7 @@
     "@commitlint/config-conventional": "^17.0.3",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.41",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^2.3.3",

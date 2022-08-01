@@ -2,10 +2,10 @@
   <a-layout>
     <layout-features />
     <layout-header />
-    <a-layout>
+    <a-layout class="mt-64px child-box">
       <layout-sidebar />
       <a-layout :class="getLayoutClass">
-        <layout-content />
+        <layout-content class="p-16px" />
         <layout-footer />
       </a-layout>
     </a-layout>
@@ -24,6 +24,7 @@ import { useCollapsed } from "./useCollapsed";
 const { getCollapsed } = useCollapsed();
 
 const getLayoutClass = computed(() => {
+  console.log(111, getCollapsed.value);
   return {
     "default-layout-main": true,
     "default-layout-main--collapsed": getCollapsed.value,
@@ -33,13 +34,13 @@ const getLayoutClass = computed(() => {
 
 <style scoped lang="less">
 .default-layout-main {
-  @apply transition-all duration-200;
-
-  padding-top: var(--header-height);
   padding-left: var(--sidebar-width);
 
   &--collapsed {
     padding-left: var(--sidebar-collapsed-width);
   }
+}
+.child-box {
+  height: calc(100vh - 64px);
 }
 </style>

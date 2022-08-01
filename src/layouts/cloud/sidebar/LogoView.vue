@@ -1,6 +1,6 @@
 <template>
-  <div class="logo">
-    <img class="max-h-full" :src="LogoUrl" alt="Logo" />
+  <div class="logo flex items-center p-10px w-full">
+    <img class="w-32px h-32px" :src="LogoUrl" alt="Logo" />
     <span v-show="showTitle" class="ml-8px text-white text-base font-bold">
       CloudAdmin
     </span>
@@ -17,8 +17,6 @@ defineProps({
 
 <style scoped lang="less">
 .logo {
-  @apply flex items-center p-10px w-full;
-
   height: var(--header-height);
 }
 </style>

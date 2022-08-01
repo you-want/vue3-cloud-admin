@@ -10,6 +10,7 @@ import { setupRouter } from "@/router";
 import { setupStore } from "@/stores";
 // import renderPortalCommonHeader from "./initPortalCommon";
 
+import "@/styles/index.less";
 import "uno.css";
 
 let root: App;

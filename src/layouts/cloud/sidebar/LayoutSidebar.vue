@@ -1,32 +1,38 @@
 <template>
   <a-layout-sider
-    v-model:collapsed="getCollapsed"
-    :class="getSidebarClass"
-    :trigger="null"
+    v-model:collapsed="collapsed"
     collapsible
+    @collapse="collapseClick"
+    class="layout-sider--fixed"
     collapsed-width="56"
   >
-    <logo :show-title="!getCollapsed" />
+    <logo :show-title="!collapsed" />
     <Menu />
   </a-layout-sider>
 </template>
 
 <script setup lang="ts">
-import { useCollapsed } from "../useCollapsed";
 import Logo from "./LogoView.vue";
 import Menu from "./MenuView.vue";
 
-const { getCollapsed } = useCollapsed();
+import { useCollapsed } from "../useCollapsed";
 
-const getSidebarClass = computed(() => {
-  return ["layout-sidebar", "layout-sidebar--fixed"];
-});
+const { toggleCollapsed } = useCollapsed();
+
+const collapsed = ref<boolean>(false);
+
+const collapseClick = () => {
+  toggleCollapsed();
+};
 </script>
 
 <style scoped lang="less">
-.layout-sidebar {
-  &--fixed {
-    @apply z-20 fixed top-0 bottom-0 left-0;
-  }
+.layout-sider--fixed {
+  height: 100%;
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
 }
 </style>

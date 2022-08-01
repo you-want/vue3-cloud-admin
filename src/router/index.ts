@@ -2,7 +2,7 @@ import type { App } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { basicRoutes, asyncRoutes } from "./routes";
 import { setupRouterGuard } from "./guard";
-// import { setupDynamicRoutes } from './routes/plugins/dynamicRoutes'
+import { setupDynamicRoutes } from "./routes/dynamicRoutes";
 
 export const router = createRouter({
   routes: [...basicRoutes, ...asyncRoutes],
@@ -16,5 +16,5 @@ export function setupRouter(app: App) {
   // Router guard
   setupRouterGuard(router);
 
-  // setupDynamicRoutes(asyncRoutes)
+  setupDynamicRoutes(asyncRoutes);
 }

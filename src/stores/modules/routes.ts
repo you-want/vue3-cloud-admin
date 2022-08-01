@@ -1,12 +1,11 @@
 import { defineStore } from "pinia";
 import type { RouteRecordRaw } from "vue-router";
 
-interface RouteState {
-  routes: RouteRecordRaw[];
-}
+type RouteModuleList = RouteRecordRaw[];
 
-export const useRouteStore = defineStore("routes", {
-  state: (): RouteState => ({
+export const useRouteStore = defineStore({
+  id: "route-store",
+  state: () => ({
     routes: [],
   }),
   getters: {
@@ -16,7 +15,7 @@ export const useRouteStore = defineStore("routes", {
   },
   actions: {
     appendRoute(
-      route: GetArrayItemType<RouteRecordRaw[]> | RouteRecordRaw[]
+      route: GetArrayItemType<RouteModuleList> | RouteModuleList
     ): void {
       if (Array.isArray(route)) {
         this.routes.push(...route);

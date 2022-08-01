@@ -19,7 +19,7 @@ coverage
 
 # Editor directories and files
 .vscode/*
-.history
+.history/*
 !.vscode/extensions.json
 .idea
 *.suo
