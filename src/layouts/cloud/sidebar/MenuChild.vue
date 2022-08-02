@@ -10,7 +10,7 @@
       v-for="subMenu in menu.children"
       :key="menu.path + '/' + subMenu.path"
     >
-      <menu-with-children
+      <menu-child
         v-if="subMenu.children"
         :parent-path="parentPath + '/' + subMenu.path"
         :menu="subMenu"

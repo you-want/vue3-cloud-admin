@@ -36,6 +36,7 @@ const menus = ref<RouteRecordRaw[]>([]);
 watch(
   () => routeStore.getRoutes,
   (routes) => {
+    console.log(1111, routes);
     menus.value = routes;
   },
   { immediate: true }

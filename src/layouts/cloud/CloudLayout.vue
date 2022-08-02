@@ -24,7 +24,6 @@ import { useCollapsed } from "./useCollapsed";
 const { getCollapsed } = useCollapsed();
 
 const getLayoutClass = computed(() => {
-  console.log(111, getCollapsed.value);
   return {
     "default-layout-main": true,
     "default-layout-main--collapsed": getCollapsed.value,
