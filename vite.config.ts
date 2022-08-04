@@ -8,6 +8,8 @@ import AutoImport from "unplugin-auto-import/vite";
 import qiankun from "vite-plugin-qiankun";
 import analyze from "rollup-plugin-analyzer";
 import Unocss from "unocss/vite";
+import { viteMockServe } from "vite-plugin-mock";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const { name } = require("./package");
 const publicPathMap: { [key: string]: string } = {
@@ -57,6 +59,24 @@ export default defineConfig(({ mode }) => {
       // 这里的 'myMicroAppName' 是子应用名，主应用注册时 AppName 需保持一致
       qiankun(name, { useDevMode }),
       Unocss(),
+      viteMockServe({
+        ignore: /^_/, // 正则匹配忽略的文件
+        mockPath: "mock", // 设置 mock.ts 文件的存储文件夹
+        localEnabled: true, // 设置是否启用本地 xxx.ts 文件，不要在生产环境中打开它.设置为 false 将禁用 mock 功能
+        prodEnabled: true, // 设置生产环境是否启用 mock 功能
+        watchFiles: true, // 设置是否监视mockPath对应的文件夹内文件中的更改
+        // 代码注入
+        injectCode: ` 
+          import { setupProdMockServer } from '../mock/_createProductionServer';
+          setupProdMockServer();
+        `,
+      }),
+      visualizer({
+        filename: "./node_modules/.cache/visualizer/stats.html",
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+      }),
     ],
     resolve: {
       alias: {
@@ -67,6 +87,30 @@ export default defineConfig(({ mode }) => {
       host: "0.0.0.0",
       port: 3000,
       open: true,
+      proxy: {
+        // 字符串简写写法
+        "/foo": "http://localhost:4567",
+        // 选项写法
+        "/api": {
+          target: "https://xxx.xxxx.com",
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/api/, ""),
+        },
+        // 正则表达式写法
+        "^/fallback/.*": {
+          target: "http://xxxx.xxxx.com",
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/fallback/, ""),
+        },
+        // 使用 proxy 实例
+        // "/api": {
+        //   target: "http://xxxx.xxxx.com",
+        //   changeOrigin: true,
+        //   configure: (proxy, options) => {
+        //     // proxy 是 'http-proxy' 的实例
+        //   },
+        // },
+      },
     },
   };
   return config;
