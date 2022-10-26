@@ -23,7 +23,9 @@ const getPublicPath = function (mode: string) {
     mode === "production"
       ? "https://static0.xesimg.com/productdata-fileupload"
       : "https://static0-test.xesimg.com/productdata-fileupload";
-  return `${OssUrl}/${name}/${publicPathMap[mode]}`;
+  const base = `${OssUrl}/${name}/${publicPathMap[mode]}/`;
+  console.log("base", base);
+  return base;
 };
 
 // useDevMode 开启时与热更新插件冲突,使用变量切换
@@ -33,7 +35,7 @@ const useDevMode = true;
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const config = {
-    base: mode === "development" ? name : getPublicPath(mode),
+    base: mode === "development" ? "/" + name + "/" : getPublicPath(mode),
     envDir: ".env",
     build: {
       // sourcemap: true,
