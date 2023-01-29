@@ -20,7 +20,7 @@
         </a>
       </a-descriptions-item>
       <a-descriptions-item label="预览地址">
-        <a href="https://vue-hbs-admin.netlify.app" target="_blank">预览地址</a>
+        <a href="" target="_blank">预览地址</a>
       </a-descriptions-item>
     </a-descriptions>
   </a-card>
