@@ -7,9 +7,19 @@ export {};
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
+    ABackTop: typeof import("ant-design-vue/es")["BackTop"];
     AButton: typeof import("ant-design-vue/es")["Button"];
+    ACard: typeof import("ant-design-vue/es")["Card"];
     AConfigProvider: typeof import("ant-design-vue/es")["ConfigProvider"];
+    ADescriptions: typeof import("ant-design-vue/es")["Descriptions"];
+    ADescriptionsItem: typeof import("ant-design-vue/es")["DescriptionsItem"];
+    ALayout: typeof import("ant-design-vue/es")["Layout"];
+    ALayoutFooter: typeof import("ant-design-vue/es")["LayoutFooter"];
+    ALayoutHeader: typeof import("ant-design-vue/es")["LayoutHeader"];
+    ALayoutSider: typeof import("ant-design-vue/es")["LayoutSider"];
+    APageHeader: typeof import("ant-design-vue/es")["PageHeader"];
     ASpace: typeof import("ant-design-vue/es")["Space"];
+    ATag: typeof import("ant-design-vue/es")["Tag"];
     RouterLink: typeof import("vue-router")["RouterLink"];
     RouterView: typeof import("vue-router")["RouterView"];
   }

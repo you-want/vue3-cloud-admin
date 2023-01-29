@@ -10,8 +10,14 @@ import analyze from "rollup-plugin-analyzer";
 import Unocss from "unocss/vite";
 import { viteMockServe } from "vite-plugin-mock";
 import { visualizer } from "rollup-plugin-visualizer";
+import dayjs from "dayjs";
 
-const { name } = require("./package");
+const { dependencies, devDependencies, name, version } = require("./package");
+const __APP_INFO__ = {
+  pkg: { dependencies, devDependencies, name, version },
+  lastBuildTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+};
+
 const publicPathMap: { [key: string]: string } = {
   production: "prod",
   gray: "gray",
@@ -113,6 +119,9 @@ export default defineConfig(({ mode }) => {
         //   },
         // },
       },
+    },
+    define: {
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
   };
   return config;

@@ -17,7 +17,7 @@ const route: RouteRecordRaw = {
     {
       path: "",
       name: "about-page",
-      component: () => import("@/views/AboutView.vue"),
+      component: () => import("@/views/about/AboutView.vue"),
     },
   ],
 };

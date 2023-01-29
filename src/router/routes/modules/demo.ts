@@ -25,7 +25,7 @@ const route: RouteRecordRaw = {
     {
       path: "test2",
       name: "test2",
-      component: () => import("@/views/AboutView.vue"),
+      component: () => import("@/views/about/AboutView.vue"),
       meta: {
         title: "二级菜单",
         sort: 12,
@@ -34,7 +34,7 @@ const route: RouteRecordRaw = {
         {
           path: "test3",
           name: "test3",
-          component: () => import("@/views/AboutView.vue"),
+          component: () => import("@/views/about/AboutView.vue"),
           meta: {
             title: "三级菜单",
             sort: 121,
@@ -43,7 +43,7 @@ const route: RouteRecordRaw = {
             {
               path: "test4",
               name: "test4",
-              component: () => import("@/views/AboutView.vue"),
+              component: () => import("@/views/about/AboutView.vue"),
               meta: {
                 title: "四级菜单",
                 sort: 1211,

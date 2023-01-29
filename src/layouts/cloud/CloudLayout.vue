@@ -5,7 +5,7 @@
     <a-layout class="mt-64px child-box">
       <layout-sidebar />
       <a-layout :class="getLayoutClass">
-        <layout-content class="p-16px" />
+        <layout-content class="" />
         <layout-footer />
       </a-layout>
     </a-layout>

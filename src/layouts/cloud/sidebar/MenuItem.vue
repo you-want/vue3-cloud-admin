@@ -6,7 +6,7 @@
     <template #icon>
       <component :is="menu.meta?.icon" />
     </template>
-    {{ menu.meta.title }}
+    {{ menu.meta?.title }}
   </a-menu-item>
 </template>
 <script setup lang="ts">
